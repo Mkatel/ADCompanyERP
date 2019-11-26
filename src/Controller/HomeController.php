@@ -1,15 +1,10 @@
 <?php
-
 namespace App\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Psr\Log\LoggerInterface;
-
 use App\Entity\Employee;
 use App\Entity\User;
-
 class HomeController extends AbstractController
 {
     /**
