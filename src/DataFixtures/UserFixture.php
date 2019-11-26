@@ -23,8 +23,8 @@ class UserFixture extends Fixture
         $password = $this->encoder->encodePassword($user, '123456');
         $user->setPassword($password);
         
-        $id = (int)15;
-        $user->setEmployeeid($id);
+        //$id = (int)15;
+        //$user->setEmployeeid($id);
         
         $manager->persist($user);
         $manager->flush();
