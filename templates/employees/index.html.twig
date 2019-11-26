@@ -3,18 +3,17 @@
 {% block title %} AD Company Employee {% endblock %}
 
 
-
 {% block body %}
-    {% if app.session %}
-     
-    {% endif %}
-
+    
+    {% if pageData.isAdmin %}
     <a href="/employee/add"> <button type="button" class="btn btn-primary">Add New Empolyee</button></a>
+    {% endif %}
+    
     {% if employees %}
         <table class="table table-striped" id="employees">
             <thead>
                <tr>
-                    <th>id</th>
+                    <th>Id</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>
@@ -34,8 +33,10 @@
                     <td>{{employee.position}}</td>
                     <td>
                         <a href="/employee/view/{{employee.id}}"> <button type="button" class="btn btn-primary">View</button></a>
-                        <a href="/employee/edit/{{employee.id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
-                        <a href="#"> <button type="button" class="btn btn-primary active" data-id = {{employee.id}}>Delete</button></a>   
+                        {% if pageData.isAdmin %}
+                            <a href="/employee/edit/{{employee.id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
+                            <a href="#"> <button type="button" class="btn btn-primary active" data-id = {{employee.id}}>Delete</button></a>   
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}

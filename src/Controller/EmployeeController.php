@@ -16,6 +16,8 @@
    use App\Entity\Employee;
    use App\Entity\User;
 
+   use Psr\Log\LoggerInterface;
+
 class EmployeeController extends Controller{
     
     /** 
@@ -24,12 +26,17 @@ class EmployeeController extends Controller{
         
     */
     // * @Security("is_granted('ROLE_ADMIN')")
-    public function index() {
-        //$this->denyaccessunlessgranted('IS_AUTHENTICATED_REMEMBERED');
-        //$user = $this.getUser();
-        //$users = $this->getDoctrine()->getRepository(User::class)->findAll();
+    public function index(LoggerInterface $logger) {
+        $username = $_SESSION['username'];
+        $isAdmin = $_SESSION['isAdmin'];
         $employees = $this->getDoctrine()->getRepository(Employee::class)->findAll();
-        return $this->render('employees/index.html.twig', array('employees' => $employees));
+        return $this->render('employees/index.html.twig', array('employees' => $employees,
+                                                                'pageData' => array(
+                                                                    'username'  => $username,
+                                                                    'isAdmin'   => $isAdmin,
+                                                                    'summary'   => "test",
+                                                                ),
+        ));
     }
 
     /** 

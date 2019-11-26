@@ -20,17 +20,6 @@ class SecurityController extends AbstractController
     {   
         $error = $utils->getLastAuthenticationError();
         $lastUserName = $utils->getLastUserName();
-        
-        // $userArr = $this->getDoctrine()->getRepository(User::class)->findByExampleField($lastUserName);
-        // $user = var_dump($userArr);
-        // $empolyee = $this->getDoctrine()->getRepository(Employee::class)->find('1');
-        
-        // $session = $this->get('session');
-        // $session->set('Division', $empolyee->getDivision());
-        // $session->set('Position', $empolyee->getPosition());
-        
-        //$_SESSION['lastUserName'] = $lastUserName;
-
         return $this->render('security/login.html.twig', [
             'error' => $error,
             'last_username' => $lastUserName
@@ -41,6 +30,6 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-
+        
     }
 }
