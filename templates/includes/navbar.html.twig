@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">AD Company</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+     
+     {% if app.user %}
+          <li class="active"><a href="/employee">Employee</a></li>
+     {% endif %}
+     
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      {% if app.user %}
+          <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      {% else %}
+          <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>

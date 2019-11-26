@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} AD Company Employee Detail {{employee.id}} {% endblock %}
+
+{% block body %}
+   <h3>Employee ID: {{employee.id}}</h3>
+   <p>
+        FirstName: {{employee.firstName}} <br>
+        Middle Name: {{employee.middleName}} <br>
+        Last Name: {{employee.lastName}} <br>
+        Division: {{employee.division}} <br>
+        Position: {{employee.position}} <br>
+   </p>
+   <hr>
+   <a href ='/employee'> Go Back></a>
+{% endblock %}
