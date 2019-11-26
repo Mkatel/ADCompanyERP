@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Psr\Log\LoggerInterface;
+
 use App\Entity\Employee;
 use App\Entity\User;
+
 class HomeController extends AbstractController
 {
     /**
@@ -19,8 +22,9 @@ class HomeController extends AbstractController
             $username = $this->getUser()->getUsername();
             $_SESSION['username'] = $username;
             $users = $this->getDoctrine()->getRepository(User::class)->findOneBy(array('username' => $username));
-            //$users->setEmployeeid(8);
             
+            $logger->debug('User pass:  '.$users->getEmployeeid());
+
             // get isAdmin 
             if ($users->getEmployeeid()){
                 $employee = $this->getDoctrine()->getRepository(Employee::class)->find($users->getEmployeeid());
