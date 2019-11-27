@@ -64,7 +64,7 @@ class User implements UserInterface, \Serializable
     {
         return $this->employeeid;
     }
-    public function setEmployeeid(int $employeeid): self
+    public function setEmployeeid(integer $employeeid): self
     {
         $this->employeeid = $employeeid;
         return $this;
