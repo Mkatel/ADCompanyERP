@@ -29,6 +29,7 @@ class EmployeeController extends Controller{
     public function index(LoggerInterface $logger) {
         $username = $_SESSION['username'];
         $isAdmin = $_SESSION['isAdmin'];
+        //$logger->debug('employee:'.$_SESSION['isAdmin']);
         $employees = $this->getDoctrine()->getRepository(Employee::class)->findAll();
         return $this->render('employees/index.html.twig', array('employees' => $employees,
                                                                 'pageData' => array(

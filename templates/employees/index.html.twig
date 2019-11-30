@@ -2,11 +2,10 @@
 
 {% block title %} AD Company Employee {% endblock %}
 
-
 {% block body %}
     
-    {% if pageData.isAdmin %}
-    <a href="/employee/add"> <button type="button" class="btn btn-primary">Add New Empolyee</button></a>
+    {% if not pageData.isAdmin %}
+        <a href="/employee/add"> <button type="button" class="btn btn-primary">Add New Empolyee</button></a>
     {% endif %}
     
     {% if employees %}
@@ -33,7 +32,7 @@
                     <td>{{employee.position}}</td>
                     <td>
                         <a href="/employee/view/{{employee.id}}"> <button type="button" class="btn btn-primary">View</button></a>
-                        {% if pageData.isAdmin %}
+                        {% if not pageData.isAdmin %}
                             <a href="/employee/edit/{{employee.id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
                             <a href="#"> <button type="button" class="btn btn-primary active" data-id = {{employee.id}}>Delete</button></a>   
                         {% endif %}

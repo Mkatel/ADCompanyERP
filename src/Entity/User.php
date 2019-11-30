@@ -17,6 +17,12 @@ class User implements UserInterface, \Serializable
     private $id;
     
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $employeeid;
+
+
+    /**
      * @ORM\Column(type="string", length=100, unique=true)
      */
     private $username;
@@ -26,15 +32,22 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $employeeid;
-
+    
     
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getEmployeeid(): ?int
+    {
+        return $this->employeeid;
+    }
+    
+    public function setEmployeeid(integer $employeeid): self
+    {
+        $this->employeeid = $employeeid;
+        return $this;
     }
 
     public function getUsername(): ?string
@@ -59,17 +72,8 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    // employeeid
-    public function getEmployeeid(): ?int
-    {
-        return $this->employeeid;
-    }
-    public function setEmployeeid(integer $employeeid): self
-    {
-        $this->employeeid = $employeeid;
-        return $this;
-    }
-    //
+    
+    
 
     public function getRoles(){
         return [ 'ROLE_USER'];
