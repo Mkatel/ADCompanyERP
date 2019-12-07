@@ -16,7 +16,7 @@ Note: if database exists, please drop it first by executing below command.
 
 5) Login: 
 
-   Username: 'Test1', Password: '123456' // user this test HR/Director authorization
+   Username: 'Test1', Password: '123456' // HR/Director authorization
 
-   Username: 'Test2', Password: '123456' // other users
+   Username: 'Test2', Password: '123456' // No HR/Director authorization
 
