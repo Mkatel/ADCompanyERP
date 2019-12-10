@@ -12,9 +12,11 @@ Note: if database exists, please drop it first by executing below command.
 
 3) php bin/console doctrine:fixtures:load
 
-4) symfony server:start
+4) manually modify DATABASE_URL in the .env file.
+ 
+5) symfony server:start
 
-5) Login: 
+6) Login as: 
 
    Username: 'Test1', Password: '123456' // HR/Director authorization
 
