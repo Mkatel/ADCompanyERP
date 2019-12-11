@@ -2,6 +2,15 @@
 
 {% block title %} AD Company Employee {% endblock %}
 
+{% block stylesheets %}
+    <style> 
+       .employee_table {
+           background-color: Green;
+       }
+    </style>
+{% endblock %}
+
+
 {% block body %}
     
     {% if pageData.isAdmin %}
@@ -11,7 +20,7 @@
     {% if employees %}
         <table class="table table-striped" id="employees">
             <thead>
-               <tr>
+               <tr class = "employee_table">
                     <th>Id</th>
                     <th>First Name</th>
                     <th>Middle Name</th>
@@ -34,7 +43,7 @@
                         <a href="/employee/view/{{employee.id}}"> <button type="button" class="btn btn-primary">View</button></a>
                         {% if pageData.isAdmin %}
                             <a href="/employee/edit/{{employee.id}}"> <button type="button" class="btn btn-primary">Edit</button></a>
-                            <a href="#"> <button type="button" class="btn btn-primary active" data-id = {{employee.id}}>Delete</button></a>   
+                            <a href="#"> <button type="button" class="btn btn-primary active" data-id = {{employee.id}} onclick = "handledOnClick({{employee.id}})">Delete</button></a>   
                         {% endif %}
                     </td>
                 </tr>
@@ -48,5 +57,12 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src = "/js/main.js"></script>
+   <script>
+        function handledOnClick(id){
+            fetch(`/employee/delete/${id}`, {
+                method: 'DELETE'
+            }).then(res => window.location.reload());
+        }
+   </script>
+   <script src = "/js/main.js"></script>
 {% endblock %}
